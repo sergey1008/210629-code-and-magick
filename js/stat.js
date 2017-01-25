@@ -21,9 +21,8 @@ window.renderStatistics = function (ctx, names, times) {
   var step = histoHeight / getMaxSearch(times);
   var columnIndent = 90;
   var colorColumn = getColor(name);
-  var maxSearch = getMaxSearch(times);
 
-  function getMaxSearch(times) {
+  function getMaxSearch() {
     var max = -1;
     for (var i = 0; i < times.length; i++) {
       var time = times[i];
@@ -38,7 +37,7 @@ window.renderStatistics = function (ctx, names, times) {
     if (name === 'Вы') {
       return 'rgba(255, 0, 0, 1)';
     } else {
-      return ['rgba(0, 0, ', ((Math.random() * 1) * 255).toFixed(0), ',', ((Math.random() * 0.3) * 1).toFixed(1), ')'].join('');
+      return ['rgba(0, 0, ', ((Math.random() * 0) * 255).toFixed(0), ',', ((Math.random() * 0.3) * 1).toFixed(1), ')'].join('');
     }
   }
 
