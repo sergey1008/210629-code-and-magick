@@ -18,39 +18,38 @@ window.renderStatistics = function (ctx, names, times) {
 
   var histoHeight = 150;
   var histoX = 140;
-  var step = histoHeight / getMaxSearch(times);
   var columnIndent = 90;
-  var colorColumn = getColor(name);
-
-  function getMaxSearch() {
-    var max = -1;
-    for (var i = 0; i < times.length; i++) {
-      var time = times[i];
-      if (time > max) {
-        max = time;
-      }
-    }
-    return max;
-  }
-
-  function getColor(name) {
-    if (name === 'Вы') {
-      return 'rgba(255, 0, 0, 1)';
-    } else {
-      return ['rgba(0, 0, ', ((Math.random() * 0) * 255).toFixed(0), ',', ((Math.random() * 0.3) * 1).toFixed(1), ')'].join('');
-    }
-  }
+  var step = histoHeight / getMaxSearch(times);
 
   for (var i = 0; i < times.length; i++) {
     var name = names[i];
     var time = times[i];
     var height = step * time;
-
+    var colorColumn = getColor(name);
 
     ctx.fillText(time.toFixed(0), histoX + columnIndent * i, 90 + histoHeight - height);
     ctx.fillStyle = colorColumn;
     ctx.fillRect(histoX + columnIndent * i, 100 + histoHeight - height, 40, height);
     ctx.fillStyle = colorText;
     ctx.fillText(name, histoX + columnIndent * i, 100 + histoHeight + 20);
+  }
+
+  function getMaxSearch(timeslist) {
+    var max = -1;
+    for (var j = 0; j < timeslist.length; j++) {
+      var timelist = times[j];
+      if (timelist > max) {
+        max = timelist;
+      }
+    }
+    return max;
+  }
+
+  function getColor(username) {
+    if (name === 'Вы') {
+      return 'rgba(255, 0, 0, 1)';
+    } else {
+      return ['rgba(0, 0, ', (Math.random() * 255).toFixed(0), ',', (Math.random() * 0.5).toFixed(1), ')'].join('');
+    }
   }
 };
