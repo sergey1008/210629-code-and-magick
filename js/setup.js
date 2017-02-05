@@ -17,7 +17,8 @@ userInput.required = true;
 userInput.maxLength = 50;
 
 var getRandomElement = function (array) {
-  var randomElementIndex = Math.floor(Math.random() * array.length - 1);
+  var max = array.length - 1;
+  var randomElementIndex = Math.round(Math.random() * max);
   return array[randomElementIndex];
 };
 
